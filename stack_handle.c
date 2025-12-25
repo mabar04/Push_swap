@@ -13,8 +13,3 @@ t_stack *createstack()
     a->size = 0;
     return (a);
 }
-
-void freestack(t_stack *a,t_stack *b)
-{
-    
-}

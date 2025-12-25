@@ -60,3 +60,16 @@ int checkint(char **argv)
     }
     return (1);
 }
+int stacksorted(t_stack *a)
+{
+    t_node *tmp;
+
+    tmp = a->top;
+    while (tmp->next != NULL)
+    {
+        if(tmp->data > tmp ->next->data)
+            return (0);
+        tmp= tmp->next;
+    }
+    return (1);
+}

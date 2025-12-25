@@ -44,14 +44,15 @@ void initialise_stack(t_stack **a,t_stack **b,char **argv)
 void indexingstack(t_stack **a)
 {
     t_node *tmp;
-    int T[(*a)->size];
+    int *T;
     int i;
     int j;
     int k;
 
     i = 0;
     tmp = (*a)->top;
-    while (tmp->next != NULL)
+    T = malloc(sizeof(int) * (*a)->size);
+    while (tmp != NULL)
     {
         T[i] = tmp->data;
         i++;
@@ -63,7 +64,7 @@ void indexingstack(t_stack **a)
         j = i + 1;
         while (j < (*a)->size)
         {
-            if(T[i] < T[j])
+            if(T[i] > T[j])
             {
                 k = T[i];
                 T[i] = T[j];
@@ -73,5 +74,20 @@ void indexingstack(t_stack **a)
         }
         i++;
     }
-
+    tmp = (*a)->top;
+    while(tmp != NULL)
+    {
+        i = 0;
+        while (i < (*a)->size)
+        {
+            if(T[i] == tmp->data)
+            {
+                tmp->index = i;
+                break;
+            }
+            i++;
+        }
+        tmp = tmp->next;
+    }
+    free(T);
 }

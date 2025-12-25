@@ -1,9 +1,10 @@
 
 #include "push_swap.h"
 
-void push_swap(t_stack *a,t_stack *b)
+void push_swap(t_stack **a,t_stack **b)
 {
-   
+    if(stacksorted(*a))
+        return;
     
 }
 

@@ -31,5 +31,5 @@ int isint(const char *s);
 int	ft_atoi(const char *nptr);
 void push_swap(t_stack *a,t_stack *b);
 t_stack *createstack();
-
+int stacksorted(t_stack *a);
 #endif
