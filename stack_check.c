@@ -67,7 +67,7 @@ int stacksorted(t_stack *a)
     tmp = a->top;
     while (tmp->next != NULL)
     {
-        if(tmp->data > tmp ->next->data)
+        if(tmp->data > tmp->next->data)
             return (0);
         tmp= tmp->next;
     }

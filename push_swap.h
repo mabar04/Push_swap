@@ -11,6 +11,10 @@ typedef struct s_node
 {
     int data;
     int index;
+    int target_position;
+    int cost_a;
+    int cost_b;
+    int chunk;
     struct s_node *next;
     struct s_node *previous;
 } t_node;
