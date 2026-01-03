@@ -10,6 +10,7 @@ t_node *createnode(int data)
     if (node == NULL)
         return NULL;
     node->data = data;
+    node->index = -1;
     node->next = NULL;
     node->previous = NULL;
     return (node);

@@ -1,6 +1,6 @@
-#include "push_swapp.h"
+#include "push_swap.h"
 
-void push_algo(t_stack *a,t_stack *b)
+static void push_algo(t_stack *a,t_stack *b)
 {
     t_node *tmp;
 

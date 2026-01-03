@@ -17,7 +17,6 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	return (0);
 }
 
-
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
@@ -73,7 +72,7 @@ int isint(const char *s)
 	{
 		if (sign == 1 && result > (INT_MAX - (s[i] - '0')) / 10)
 			return (0);
-		else if (sign == -1 && result > (-(long)INT_MIN  - (s[i] - '0')) / 10)
+		if (sign == -1 && result > (-(long)INT_MIN  - (s[i] - '0')) / 10)
 			return (0);
 		result = result * 10 + (s[i] - '0');
 		i++;

@@ -11,10 +11,7 @@ typedef struct s_node
 {
     int data;
     int index;
-    int target_position;
-    int cost_a;
-    int cost_b;
-    int chunk;
+    int cost;
     struct s_node *next;
     struct s_node *previous;
 } t_node;
@@ -23,17 +20,45 @@ typedef struct s_stack
 {
     t_node *top;
     t_node *bottom;
-    size_t size; 
+    int size; 
 
 }t_stack;
 
+int main(int argc,char **argv0);
 int	ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t	ft_strlen(const char *str);
-void initialise_stack(t_stack *stack,char **argv);
+void initialise_stack(t_stack **a,t_stack **b,char **argv);
 char	**ft_split(const char *s, char c);
 int isint(const char *s);
 int	ft_atoi(const char *nptr);
 void push_swap(t_stack *a,t_stack *b);
 t_stack *createstack();
 int stacksorted(t_stack *a);
+int checknumbers(char **argv);
+int checkuniq(char **argv);
+int checkint(char **argv);
+int stacksorted(t_stack *a);
+t_node *createnode(int data);
+void sort_2(t_stack *a);
+void sort_3(t_stack *a);
+void sort_5(t_stack *a,t_stack *b);
+void sortalgo(t_stack *a,t_stack *b);
+void sa(t_stack *a);
+void sb(t_stack *b);
+void ss(t_stack *a,t_stack *b);
+void ra(t_stack *a);
+void rb(t_stack *a);
+void rr(t_stack *a,t_stack *b);
+void rra(t_stack *a);
+void rrb(t_stack *a);
+void rrr(t_stack *a,t_stack *b);
+void pa(t_stack *a,t_stack *b);
+void pb(t_stack *a,t_stack *b);
+void indexingstack(t_stack *a);
+// void radix_sort(t_stack *a, t_stack *b);
+// int maxbites(t_stack *a);
+/*pull algo functions*/
+void chunkalgo(t_stack *a, t_stack *b);
+void pullalggo(t_stack *a, t_stack *b);
+void free_stack(t_stack *stack);
 #endif

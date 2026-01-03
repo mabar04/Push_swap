@@ -1,9 +1,9 @@
 
 #include "push_swap.h"
 
-void sa_algo(t_stack *a)
+static void sa_algo(t_stack *a)
 {
-     t_node *first;
+    t_node *first;
     t_node *second;
 
     if(!a || a ->size < 2)
@@ -23,18 +23,18 @@ void sa_algo(t_stack *a)
 void sa(t_stack *a)
 {
     sa_algo(a);
-    return (write(1,"sa\n",3));
+    write(1,"sa\n",3);
 }
 
 void sb(t_stack *b)
 {
     sa_algo(b);
-    return (write(1,"sb\n",3));
+    write(1,"sb\n",3);
 }
 
 void ss(t_stack *a,t_stack *b)
 {
     sa_algo(a);
     sa_algo(b);
-    return (write(1,"ss\n",3));
+    write(1,"ss\n",3);
 }

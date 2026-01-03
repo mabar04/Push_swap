@@ -7,30 +7,26 @@ void sort_2(t_stack *a)
 }
 void sort_3(t_stack *a)
 {
-  int A;
-  int B;
-  int C;
+  int A = a->top->index;
+  int B = a->top->next->index;
+  int C = a->bottom->index;
 
-  A = a->top->index;
-  B = a->top->next->index;
-  C = a->bottom->index;
-  
-if(A == 0 && B == 2 && C == 1)
-{
-  sa(a);
-  ra(a);
-}
-else if(A == 1 && B == 0 && C == 2)
-  sa(a);
-else if(A == 1 && B == 2 && C ==0)
-  rra(a);
-else if(A == 2 && B == 0 && C == 1)
-  ra(a);
-else if(A == 2 && B == 1 && C == 0)
-{
-  sa(a);
-  rra(a);
-}
+  if (A > B && B < C && A < C)
+      sa(a);
+  else if (A > B && B > C)
+  {
+    sa(a); 
+    rra(a);
+  }
+  else if (A > B && B < C && A > C)
+    ra(a);
+  else if (A < B && B > C && A < C)
+  {
+    sa(a); 
+    ra(a);
+  }
+  else if (A < B && B > C && A > C)
+    rra(a);
 }
 
 void sort_5(t_stack *a,t_stack *b)
@@ -43,14 +39,17 @@ void sort_5(t_stack *a,t_stack *b)
       ra(a);
   }
   sort_3(a);
-  sort_2(b);
   pa(a,b);
   pa(a,b);
   if(a->top->index == 1 && a->top->next->index == 0)
     sa(a);
   return;
 }
+
+
 void sortalgo(t_stack *a,t_stack *b)
 {
-
+  //radix_sort(a,b);
+  chunkalgo(a,b);
+  pullalggo(a,b);
 }

@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void rotate_algo(t_stack *a)
+static void rotate_algo(t_stack *a)
 {
     t_node *topnode;
 
@@ -18,18 +18,15 @@ void ra(t_stack *a)
 {
     rotate_algo(a);
     write(1,"ra\n",3);
-    return;
 }
 void rb(t_stack *a)
 {
     rotate_algo(a);
     write(1,"rb\n",3);
-    return;
 }
 void rr(t_stack *a,t_stack *b)
 {
     rotate_algo(a);
     rotate_algo(b);
     write(1,"rr\n",3);
-    return;
 }
