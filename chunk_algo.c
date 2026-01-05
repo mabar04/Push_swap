@@ -71,9 +71,8 @@ void chunkalgo(t_stack *a, t_stack *b)
     int chunksize;
     t_node *cheap;
 
-    chunksize = (a->size <= 100) ? 31 : 50; // optimized for 500 numbers
+    chunksize = 100;
     chunkmax = chunksize - 1;
-
     while (a->size > 3)
     {
         while (still_in_chunk(a, chunkmin, chunkmax) && a->size > 3)
