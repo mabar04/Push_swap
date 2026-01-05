@@ -1,64 +1,90 @@
 #include "push_swap.h"
 
-static t_node *maxnode_calc(t_stack *b)
+t_node *find_smallest_bigger(t_stack *a,int index)
 {
     t_node *tmp;
-    t_node *maxnode;
+    t_node *target;
+    int smallest;
 
-    tmp = b->top;
-    maxnode = tmp;
-    while(tmp != NULL)
+    smallest = INT_MAX;
+    target = NULL;
+    tmp = a->top;
+    while(tmp)
     {
-        if(maxnode->index < tmp->index)
-            maxnode = tmp;
-        tmp = tmp->next;
-    }
-    return (maxnode);
-}
-static void rotateb(t_stack *b, t_node *max)
-{
-    t_node *tmp;
-    int topdistance;
-    int bottomdistance;
-
-    tmp = b->top;
-    topdistance = 0;
-
-    while (tmp)
-    {
-        if (tmp == max)
-            break;
-        tmp = tmp->next;
-        topdistance++;
-    }
-
-    bottomdistance = b->size - topdistance;
-
-    if (topdistance <= bottomdistance)
-    {
-        while (topdistance-- > 0)
-            rb(b);
-    }
-    else
-    {
-        while (bottomdistance-- > 0)
-            rrb(b);
-    }
-}
-void pullalggo(t_stack *a, t_stack *b)
-{
-    t_node *maxnode;
-
-    while (b->size > 0)
-    {
-        maxnode = maxnode_calc(b);
-        if (b->top->next && b->top->next->index == maxnode->index)
+        if(tmp->index > index && tmp->index < smallest)
         {
-            sb(b);
-            pa(a, b);
-            continue;
+            smallest = tmp->index;
+            target = tmp;
         }
-        rotateb(b, maxnode);
-        pa(a, b);
+        tmp = tmp->next;
     }
+    return (target);
+}
+
+void target_position(t_stack *a, t_stack *b)
+{
+    t_node *tmpa;
+    t_node *tmpb;
+    t_node *target;
+
+    tmpb = b->top;
+    while(tmpb)
+    {   
+        // find node in a with smallest index bigger than tmpb->index
+        target = find_smallest_bigger(a, tmpb->index);
+
+        if(target == NULL)
+        {
+            // tmpb is bigger than all nodes in a
+            // target should be the node with the smallest index
+            tmpa = a->top;
+            target = tmpa;
+            while(tmpa)
+            {
+                if(tmpa->index < target->index)
+                    target = tmpa;
+                tmpa = tmpa->next;
+            }
+        }
+
+        tmpb->target = target;
+        tmpb = tmpb->next;
+    }
+}
+
+
+t_node *cheapest_calc(t_stack *b)
+{
+    t_node *tmp;
+    t_node *cheap;
+    int cheap_cost;
+
+    tmp = b->top;
+    cheap = b->top;
+    cheap_cost = cheap->total_cost;
+
+    while(tmp)
+    {
+        if(cheap_cost > tmp->total_cost)
+        {
+            cheap_cost  = tmp->total_cost;
+            cheap = tmp;
+        }
+        tmp = tmp->next;
+    }
+    return (cheap);
+}
+void pull_phase(t_stack *a,t_stack *b)
+{
+    t_node *cheapest;
+
+    while(b->size > 0)
+    {
+        target_position(a,b);
+        calculate_costs(a,b);
+        cheapest = cheapest_calc(b);
+        execute_moves_combined(a, b,cheapest);
+        pa(a,b);
+    }
+    final_rotate(a);
 }

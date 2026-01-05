@@ -12,6 +12,10 @@ typedef struct s_node
     int data;
     int index;
     int cost;
+    int a_cost;
+    int b_cost;
+    int total_cost;
+    struct s_node *target;
     struct s_node *next;
     struct s_node *previous;
 } t_node;
@@ -59,6 +63,9 @@ void indexingstack(t_stack *a);
 // int maxbites(t_stack *a);
 /*pull algo functions*/
 void chunkalgo(t_stack *a, t_stack *b);
-void pullalggo(t_stack *a, t_stack *b);
+void pull_phase(t_stack *a,t_stack *b);
 void free_stack(t_stack *stack);
+void calculate_costs(t_stack *a,t_stack *b);
+void execute_moves_combined(t_stack *a, t_stack *b, t_node *cheapest);
+void final_rotate(t_stack *a);
 #endif

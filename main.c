@@ -31,7 +31,15 @@ static void	free_memory(char **s)
 		free(s[--i]);
 	free(s);
 }
-
+void print_stack_index(t_stack *a)
+{
+    t_node *tmp = a->top;
+    while(tmp)
+    {
+        printf("%d\n", tmp->index);
+        tmp = tmp->next;
+    }
+}
 int main(int argc, char **argv)
 {
     t_stack *a;
@@ -58,6 +66,7 @@ int main(int argc, char **argv)
     if (!a)
         return (2);
     indexingstack(a);
+    //print_stack_index(a);
     push_swap(a,b);
     free_stack(a);
     free_stack(b);

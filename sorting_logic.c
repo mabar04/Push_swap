@@ -49,7 +49,7 @@ void sort_5(t_stack *a,t_stack *b)
 
 void sortalgo(t_stack *a,t_stack *b)
 {
-  //radix_sort(a,b);
   chunkalgo(a,b);
-  pullalggo(a,b);
+  sort_3(a);
+  pull_phase(a,b);
 }
