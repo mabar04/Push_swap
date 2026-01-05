@@ -1,45 +1,5 @@
 #include "push_swap.h"
-#include <stdio.h>
 
-void free_stack(t_stack *stack)
-{
-    t_node *tmp;
-    t_node *next;
-
-    if (!stack)
-        return;
-
-    tmp = stack->top;
-    while (tmp)
-    {
-        next = tmp->next;
-        free(tmp);
-        tmp = next;
-    }
-    free(stack);
-}
-static void	free_memory(char **s)
-{
-    int i;
-
-    i = 0;
-    while(s[i])
-    {
-        i++;
-    }
-    while (i > 0)
-		free(s[--i]);
-	free(s);
-}
-void print_stack_index(t_stack *a)
-{
-    t_node *tmp = a->top;
-    while(tmp)
-    {
-        printf("%d\n", tmp->index);
-        tmp = tmp->next;
-    }
-}
 int main(int argc, char **argv)
 {
     t_stack *a;
@@ -56,6 +16,8 @@ int main(int argc, char **argv)
         argv0 = ft_split(argv[1], ' ');
         if (!argv0)
             return (1);
+        if( argv0[0] == NULL)
+            return (write(2,"Error\n",6));
         initialise_stack(&a, &b, argv0);
     }
     else
@@ -71,5 +33,5 @@ int main(int argc, char **argv)
     free_stack(a);
     free_stack(b);
     if(argv0)
-        free_memory(argv0);
+        free_memory_main(argv0);
 }

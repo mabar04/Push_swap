@@ -59,6 +59,7 @@ void rrr(t_stack *a,t_stack *b);
 void pa(t_stack *a,t_stack *b);
 void pb(t_stack *a,t_stack *b);
 void indexingstack(t_stack *a);
+void	free_memory_main(char **s);
 // void radix_sort(t_stack *a, t_stack *b);
 // int maxbites(t_stack *a);
 /*pull algo functions*/
@@ -68,4 +69,15 @@ void free_stack(t_stack *stack);
 void calculate_costs(t_stack *a,t_stack *b);
 void execute_moves_combined(t_stack *a, t_stack *b, t_node *cheapest);
 void final_rotate(t_stack *a);
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 50
+# endif
+
+char	*ft_strdup(char *s1);
+size_t	ft_strlen_next(char *s);
+size_t	ft_strlen_ln(char *s);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+char	*ft_strjoin(char *s1, char *s2);
+char	*get_next_line(int fd);
 #endif

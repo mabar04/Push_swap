@@ -1,4 +1,5 @@
 #include "push_swap.h"
+
 static int still_in_chunk(t_stack *a, int chunkmin, int chunkmax)
 {
     t_node *tmp = a->top;
@@ -71,7 +72,7 @@ void chunkalgo(t_stack *a, t_stack *b)
     int chunksize;
     t_node *cheap;
 
-    chunksize = 100;
+    chunksize = a->size;
     chunkmax = chunksize - 1;
     while (a->size > 3)
     {

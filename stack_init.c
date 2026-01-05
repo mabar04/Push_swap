@@ -16,17 +16,16 @@ static int handleallchecks(char **argv)
 /* Initialise stack A and B */
 void initialise_stack(t_stack **a, t_stack **b, char **argv)
 {
-    size_t i = 0;
+    size_t i;
     t_node *new;
 
     if (!handleallchecks(argv))
         return;
-
+    i = 0;
     *a = createstack();
     *b = createstack();
-    if (!*a || !*b)  // check allocation
+    if (!*a || !*b)
         return;
-
     while (argv[i])
     {
         new = createnode(ft_atoi(argv[i]));
@@ -36,7 +35,6 @@ void initialise_stack(t_stack **a, t_stack **b, char **argv)
             free_stack(*b);
             return;
         }
-
         if ((*a)->size == 0)
             (*a)->top = (*a)->bottom = new;
         else

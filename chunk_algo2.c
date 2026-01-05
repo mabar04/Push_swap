@@ -30,13 +30,10 @@ void target_position(t_stack *a, t_stack *b)
     tmpb = b->top;
     while(tmpb)
     {   
-        // find node in a with smallest index bigger than tmpb->index
         target = find_smallest_bigger(a, tmpb->index);
 
         if(target == NULL)
         {
-            // tmpb is bigger than all nodes in a
-            // target should be the node with the smallest index
             tmpa = a->top;
             target = tmpa;
             while(tmpa)
@@ -46,7 +43,6 @@ void target_position(t_stack *a, t_stack *b)
                 tmpa = tmpa->next;
             }
         }
-
         tmpb->target = target;
         tmpb = tmpb->next;
     }
@@ -62,7 +58,6 @@ t_node *cheapest_calc(t_stack *b)
     tmp = b->top;
     cheap = b->top;
     cheap_cost = cheap->total_cost;
-
     while(tmp)
     {
         if(cheap_cost > tmp->total_cost)
