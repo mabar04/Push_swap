@@ -1,32 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   help_functions2.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabar <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/08 02:30:04 by mabar             #+#    #+#             */
+/*   Updated: 2026/01/08 17:31:38 by mabar            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void free_stack(t_stack *stack)
+void	free_stack(t_stack *stack)
 {
-    t_node *tmp;
-    t_node *next;
+	t_node	*tmp;
+	t_node	*next;
 
-    if (!stack)
-        return;
-
-    tmp = stack->top;
-    while (tmp)
-    {
-        next = tmp->next;
-        free(tmp);
-        tmp = next;
-    }
-    free(stack);
+	if (!stack)
+		return ;
+	tmp = stack->top;
+	while (tmp)
+	{
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
+	}
+	free(stack);
 }
+
 void	free_memory_main(char **s)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while(s[i])
-    {
-        i++;
-    }
-    while (i > 0)
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	while (i > 0)
 		free(s[--i]);
 	free(s);
 }

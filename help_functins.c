@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   help_functins.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mabar <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/08 02:30:04 by mabar             #+#    #+#             */
+/*   Updated: 2026/01/08 17:31:38 by mabar            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
@@ -5,6 +17,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	unsigned char	*a;
 	unsigned char	*b;
 	size_t			r;
+
 	a = (unsigned char *)s1;
 	b = (unsigned char *)s2;
 	r = 0;
@@ -20,12 +33,12 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
+
 	i = 0;
 	while (str[i])
 		i++;
 	return (i);
 }
-
 
 int	ft_atoi(const char *nptr)
 {
@@ -51,11 +64,12 @@ int	ft_atoi(const char *nptr)
 	}
 	return (result * sign);
 }
-int isint(const char *s)
+
+int	isint(const char *s)
 {
-	size_t i;
-	long result;
-	int sign;
+	size_t	i;
+	long	result;
+	int		sign;
 
 	i = 0;
 	result = 0;
@@ -72,7 +86,7 @@ int isint(const char *s)
 	{
 		if (sign == 1 && result > (INT_MAX - (s[i] - '0')) / 10)
 			return (0);
-		if (sign == -1 && result > (-(long)INT_MIN  - (s[i] - '0')) / 10)
+		if (sign == -1 && result > (-(long)INT_MIN - (s[i] - '0')) / 10)
 			return (0);
 		result = result * 10 + (s[i] - '0');
 		i++;
