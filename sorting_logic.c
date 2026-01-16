@@ -55,8 +55,8 @@ void	sort_5(t_stack *a, t_stack *b)
 			ra(a);
 	}
 	sort_3(a);
-	pa(a, b);
-	pa(a, b);
+	while (b->size > 0)
+		pa(a, b);
 	if (a->top->index == 1 && a->top->next->index == 0)
 		sa(a);
 	return ;

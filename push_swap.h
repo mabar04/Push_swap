@@ -43,7 +43,7 @@ int					main(int argc, char **argv0);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t				ft_strlen(const char *str);
 void				initialise_stack(t_stack **a, t_stack **b, char **argv);
-char				**ft_split(const char *s, char c);
+char				**flatten(int ac, char **av);
 int					isint(const char *s);
 int					ft_atoi(const char *nptr);
 void				push_swap(t_stack *a, t_stack *b);
@@ -80,7 +80,11 @@ void				execute_moves_combined(t_stack *a, t_stack *b,
 void				final_rotate(t_stack *a);
 void				sort_array(int *i, t_stack *a, int *T);
 void				indexing_helpp(t_node *tmp, t_stack *a, int *s);
-
+char				*word_dup(char *s, int a, int b);
+char				**split_one(char *s);
+int					total_words(int ac, char **av);
+int					word_count(char *s);
+int					is_space(char c);
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 50
 # endif

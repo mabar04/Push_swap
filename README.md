@@ -18,30 +18,23 @@ This project focuses on:
 
 ## Instructions
 
-### ✅ **Compilation**
-
-
 This produces the `push_swap` binary at the root of the repository.
+To compile the program use `make` command 
+To compile the bonus part use `make bonus`
+To remove the object files and leave the program use `make clean`
+To remove the program with object files use `make fclean`
+To clean all and rebuild the program use `make re`
 
-### ▶️ **Execution**
+To execute the program you need to write `./push_swap` and the arguments (list that you want to sort)
 
-
-Example:
-
-
-### 🔍 **Checker Mode **
-
-Input instructions through stdin:
-
-
----
+### Example 
+./push_swap 1 5 9 3 2 0
 
 ## Resources
 
 ### 📚 Documentation & References
 - Sorting Algorithms (Quick Sort, Merge Sort, Insertion Sort, etc.)
 - Data Structures (Stacks & Linked Lists)
-- Complexity Theory & Big-O
 - 42 Subject PDF & Evaluation Guides
 
 ### 🤖 Use of AI During Development
@@ -56,8 +49,6 @@ All implementations, algorithms, and architectural decisions were written and va
 
 ---
 
-## Optional / Additional Sections (if you want to keep them)
-
 ### Features
 - handles positive/negative integers
 - checks for duplicates & invalid input
@@ -68,11 +59,8 @@ All implementations, algorithms, and architectural decisions were written and va
 ### Technical Choices
 - doubly linked list for O(1) rotate & reverse rotate
 - index compression to avoid manipulating raw values
-- chunk strategies for ≤ 700 elements
+- Turc strategie + some chunk to get the best moves
 - custom checker for debugging
-
-### Example
-
 
 ---
 

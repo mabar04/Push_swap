@@ -53,3 +53,56 @@ void	indexing_helpp(t_node *tmp, t_stack *a, int *s)
 		tmp = tmp->next;
 	}
 }
+
+char	*word_dup(char *s, int a, int b)
+{
+	char	*w;
+	int		i;
+
+	w = malloc((b - a + 1));
+	if (!w)
+		return (NULL);
+	i = 0;
+	while (a < b)
+		w[i++] = s[a++];
+	w[i] = '\0';
+	return (w);
+}
+
+char	**split_one(char *s)
+{
+	char	**out;
+	int		i;
+	int		k;
+	int		st;
+
+	out = malloc(sizeof(char *) * (word_count(s) + 1));
+	if (!out)
+		return (NULL);
+	i = 0;
+	k = 0;
+	while (s[i])
+	{
+		while (s[i] && is_space(s[i]))
+			i++;
+		st = i;
+		while (s[i] && !is_space(s[i]))
+			i++;
+		if (i > st)
+			out[k++] = word_dup(s, st, i);
+	}
+	out[k] = NULL;
+	return (out);
+}
+
+int	total_words(int ac, char **av)
+{
+	int	i;
+	int	total;
+
+	i = 1;
+	total = 0;
+	while (i < ac)
+		total += word_count(av[i++]);
+	return (total);
+}
